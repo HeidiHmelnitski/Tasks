@@ -2,6 +2,21 @@
 const form = document.querySelector("form")
 form.addEventListener("submit", addTask)
 
+//tasklist
+const tasklist = document.querySelector("ul")
+tasklist.addEventListener("click", delTask)
+
+//delTask
+function delTask(event) {
+    if (event.target.textContent === "X") {
+        if(confirm("jnejnej")){
+            event.target.parentElement.remove()
+
+         console.log(event.target)
+        }
+    }
+}
+
 // add task funktsion
 function addTask (event) {
     console.log(event.type)
@@ -17,6 +32,13 @@ function addTask (event) {
     const text = document.createTextNode(task)
     // get element from DOM
     li.appendChild(text)
+    const link= document.createElement("a")
+    link.className ="secondary-content"
+    link.appendChild(document.createTextNode("X"))
+    link.setAttribute("href", "a")
+    li.appendChild(link)
+
+
     // get element from DO
     taskList.appendChild(li)
     //clear form input value
